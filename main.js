@@ -19,6 +19,7 @@ const tempoObjetivo3=new Date("2025-12-30T00:00:00")
 const tempoObjetivo4=new Date("2026-02-01T00:00:00")
 
 const tempos=[tempoObjetivo1,tempoObjetivo2,tempoObjetivo3,tempoObjetivo4]
+
 function calculatempo(tempoObjetivo){
     let tempoAtual = new date ();
     let tempoFinal = tempoObjetivo - tempoAtual;
@@ -31,15 +32,17 @@ function calculatempo(tempoObjetivo){
     minutos %=60;
     horas %=24
     if (tempoFinal >0) {
-        return dias + " dias " + horas + " horas " + minutos + " minutos " + segundos + " segundos ";
-    } else {
-        return "Prazo Finalizado"
+        return [dias,horas,minutos,segundos];
+    } else {document.getElementById("seg0").textContent = calculatempo(tempos [0]) [3];
+        return [0,0,0,0];
     }
 }
 function atualizaCronometro(){
  for (let i=0; i<contadores.length; i ++){
-    contadores [i].textContent = calculatempo(tempos [i]);
-
+    document.getElementById("dias"+i).textContent = calculaTempo(tempos[i])[0];
+    document.getElementById("horas"+i).textContent = calculaTempo(tempos[i])[1];
+    document.getElementById("min"+i).textContent = calculaTempo(tempos[i])[2];
+    document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3];
  }
 }
 function comecaCronometro(){
